@@ -2,6 +2,7 @@
 
 - Node.js
 - Docker
+- 20GBぐらいの空き容量
 
 ## 事前準備
 
@@ -18,6 +19,16 @@ docker pull connormanning/entwine
 sh download.sh
 ```
 
+あとで利用するコマンドをインストールしておきます。
+
+```bash
+git clone -b dev/add_proj4_text_for_japanese https://github.com/smellman/ept-tools.git
+cd ept-tools
+npm i
+cd ..
+npm install -g serve
+```
+
 ## マージ作業
 
 掛川城のデータを一つのlasにマージします。
@@ -29,14 +40,12 @@ docker run --rm -v $(pwd):/working smellman/lastools:latest sh -c 'lasmerge -i /
 ## 3DTiles作成
 
 ```bash
-docker run -it -v ~/entwine:/entwine connormanning/entwine build \
-    -i https://data.entwine.io/red-rocks.laz \
-    -o /entwine/red-rocks
+sh entwine-build.sh
+cd ept-tools
+node lib/app.js tile ../kakegawa_output
+cd ..
 ```
 
-```bash
-docker run --rm -v $(pwd):/working ha4db/py3dtiles py3dtiles convert /working/kakegawa.las --out /working/tiles
-```
 
 ## HTTPサーバ起動
 
