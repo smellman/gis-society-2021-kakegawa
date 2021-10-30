@@ -34,7 +34,7 @@ npm install -g serve
 掛川城のデータを一つのlasにマージします。
 
 ```bash
-docker run --rm -v $(pwd):/working smellman/lastools:latest sh -c 'lasmerge -i /working/*.las -o /working/kakegawa.las'
+docker run --rm -u `id -u`:`id -g` -v $(pwd):/working smellman/lastools:latest sh -c 'lasmerge -i /working/*.las -o /working/kakegawa.las'
 ```
 
 ## 3DTiles作成
@@ -46,6 +46,7 @@ node lib/app.js tile ../kakegawa_output
 cd ..
 ```
 
+注: GNU Parallelが入っている場合はentwine-build-parallel.shを代わりに利用すると高速にビルドできます。
 
 ## HTTPサーバ起動
 
