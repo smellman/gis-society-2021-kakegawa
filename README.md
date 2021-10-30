@@ -26,7 +26,7 @@ git clone -b dev/add_proj4_text_for_japanese https://github.com/smellman/ept-too
 cd ept-tools
 npm i
 cd ..
-npm install -g serve
+sudo npm install -g serve
 ```
 
 ## マージ作業
@@ -51,6 +51,5 @@ cd ..
 ## HTTPサーバ起動
 
 ```bash
-npm install -g serve
 serve -C 3000 .
 ```
