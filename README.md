@@ -4,6 +4,16 @@
 - Docker
 - 20GBぐらいの空き容量
 
+## WSL memo
+
+```bash
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y docker.io wget
+curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
 ## 事前準備
 
 dockerをインストールして、イメージをダウンロードします。
